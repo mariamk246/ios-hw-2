@@ -33,6 +33,22 @@ import UIKit
 -- قم بإنشاء دالة بداخل الستركت Card باسم  `imageName`والتي تقوم بإرجاع اسم الصورة للكرت. قم بفتح المجلد Resources الموجود بداخل الplayground من النافذة اليسرى لرؤية طريقة تسمية الكرت
  ###### مثال على تسمية الكروت موضحة كالتالي، قم بتشغيل الكود لرؤية الصور أسفل هذه الأكواد:
  */
+struct Card {
+    var color : String
+    var number : Int
+    
+    func imageName() -> String {
+        return("\(color)_\(number).png")
+    }
+    
+}
+var cards :[Card] = []
+var colors = ["Green","Blue","Yellow","Red"]
+for color in colors{
+    for i in 0...9{
+        cards.append(Card(color: color, number: i))
+    }
+}
 
 
 var blue_5 = UIImage(named: "Blue_6.png")
@@ -95,11 +111,10 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 
 // لا تقم بإزالة الملاحظات إلا عند وصولك للمطلوب الثالث
 
-//
-//let randomCard = cards.randomElement()!
-//let randomCardImage = UIImage(named: randomCard.imageName())
-//
-//
-//let cardImages = cards.map{UIImage(named: $0.imageName())}
-//randomCardImage
-//cardImages
+
+let randomCard = cards.randomElement()!
+let randomCardImage = UIImage(named: randomCard.imageName())
+
+let cardImages = cards.map{UIImage(named: $0.imageName())}
+randomCardImage
+cardImages
